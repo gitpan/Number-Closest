@@ -1,6 +1,6 @@
 package Number::Closest;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use Moose;
 
@@ -54,9 +54,14 @@ Number::Closest - find number(s) closest to a number in a list of numbers
 
  use Number::Closest;
 
- my $closest = Number::Closest->new(number => $num, numbers => \@num) ;
+ my $finder = Number::Closest->new(number => $num, numbers => \@num) ;
+ my $closest = $finder->find; # finds closest number
+ my $closest_two = $finder->find(2) ;  # gives arrayref of two closest numbers in list
  
- my $closest_two = $closest->find(2) ;  # gives arrayref of two closest numbers in list
+ # or, all in one shot
+ Number::Closest->new(number => $num, numbers => \@num)->find(1) ;
+ 
+
 
 
 =head1 SEE ALSO
