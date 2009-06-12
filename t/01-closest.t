@@ -1,6 +1,6 @@
 #!perl -T
 
-use Test::More tests => 3;
+use Test::More tests => 4;
 
 BEGIN {
 	use_ok( 'Number::Closest' );
@@ -48,3 +48,6 @@ my $analysis = [
 is_deeply($closest->analyze, $analysis, 'closest analysis') ;
 
 is_deeply($closest->find(2), [7, 4.5], 'closest find') ;
+
+
+is($closest->find(1), 7, 'closest single');

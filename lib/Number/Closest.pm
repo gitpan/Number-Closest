@@ -1,12 +1,11 @@
 package Number::Closest;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Moose;
 
 has 'number'   => (isa => 'Num',           is => 'rw', required => 1);
 has 'numbers'  => (isa => 'ArrayRef[Num]', is => 'rw', required => 1);
-has 'amount'   => (isa => 'Num',           is => 'rw', default  => 1);
 
 sub analyze {
     my($self)=@_;
@@ -36,7 +35,11 @@ sub find {
     #use Data::Dumper;
     #warn Dumper \@closest, \@c;
 
-    \@c;
+    if ($amount == 1) {
+	$c[0] ;
+    } else {
+	\@c;
+    }
 
 }
 
@@ -47,22 +50,13 @@ sub find {
 
 Number::Closest - find number(s) closest to a number in a list of numbers
 
-=head1 VERSION
-
-Version 0.01
-
-=cut
-
-
-
 =head1 SYNOPSIS
 
- use Data::Dumper;
  use Number::Closest;
 
- my $closest = Number::Closest->new(number => $num, numbers => \@num, amount => 2) ;
+ my $closest = Number::Closest->new(number => $num, numbers => \@num) ;
  
- my $closest_two = $closest->find(2) ;  # gives you the two closest numbers in list
+ my $closest_two = $closest->find(2) ;  # gives arrayref of two closest numbers in list
 
 
 =head1 SEE ALSO

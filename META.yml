@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Number-Closest
-version:            0.01
+version:            0.02
 abstract:           find number(s) closest to a number in a list of numbers
 author:
     - Terrence Brannon <tbone@cpan.org>
